@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialogRef } from '@angular/material/dialog';
+import { Todo } from '../../interfaces';
+import { TodosService } from '../../services/todos.servics';
 
 @Component({
   selector: 'app-create-window',
@@ -10,7 +13,11 @@ export class CreateWindowComponent implements OnInit {
 
   createForm!: FormGroup
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private dialogRef: MatDialogRef<CreateWindowComponent>,
+    private todosService: TodosService
+  ) { }
 
   ngOnInit(): void {
     this.createForm = this.formBuilder.group({
@@ -20,7 +27,24 @@ export class CreateWindowComponent implements OnInit {
   }
 
   addTodo() {
-    console.log('Form', this.createForm.value)
+    if (this.createForm.invalid) {
+      return
+    }
+
+    const todo: Todo = {
+      status: true,
+      title: this.createForm.value.title,
+      text: this.createForm.value.text
+    }
+
+    this.todosService.create(todo).subscribe(() => {
+      this.createForm.reset()
+    })
+
+  }
+
+  close() {
+    this.dialogRef.close()
   }
 
 }

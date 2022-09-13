@@ -9,7 +9,6 @@ import { SharedModule } from './shared/shared.module';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
-import { MatDialogModule } from '@angular/material/dialog';
 import { HttpClientModule } from '@angular/common/http';
 
 
@@ -24,7 +23,6 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserAnimationsModule,
     MatToolbarModule,
     MatButtonToggleModule,
-    MatDialogModule,
     CreateWindowModule,
     SharedModule,
     HttpClientModule
