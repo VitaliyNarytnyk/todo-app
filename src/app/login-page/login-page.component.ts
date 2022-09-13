@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { User } from '../shared/interfaces';
+import { AuthService } from '../shared/services/auth.service';
 
 @Component({
   selector: 'app-login-page',
@@ -12,7 +15,11 @@ export class LoginPageComponent implements OnInit {
 
   hide: boolean = true
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private auth: AuthService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
     this.loginForm = new FormGroup({
@@ -24,6 +31,22 @@ export class LoginPageComponent implements OnInit {
         Validators.required,
         Validators.minLength(6)
       ])
+    })
+  }
+
+  submit() {
+    if (this.loginForm.invalid) {
+      return
+    }
+
+    const user: User = {
+      email: this.loginForm.value.email,
+      password: this.loginForm.value.password
+    }
+
+    this.auth.login(user).subscribe(() => {
+      this.loginForm.reset()
+      this.router.navigate(['/home'])
     })
   }
 

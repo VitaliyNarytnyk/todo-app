@@ -2,7 +2,7 @@
 	<mat-card-title>
 		<h2>LOGIN PAGE</h2>
 	</mat-card-title>
-	<form action="" [formGroup]="loginForm">
+	<form action="" [formGroup]="loginForm" (ngSubmit)="submit()">
 		<div class="input-field">
 			<mat-form-field appearance="outline">
 				<mat-label>Email</mat-label>
@@ -23,6 +23,6 @@
 				</mat-error>
 			</mat-form-field>
 		</div>
-		<button mat-flat-button color="primary">Login</button>
+		<button mat-flat-button color="primary" type="submit">Login</button>
 	</form>
 </mat-card>

@@ -10,6 +10,7 @@ import { SharedModule } from './shared/shared.module';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatDialogModule } from '@angular/material/dialog';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -25,7 +26,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatButtonToggleModule,
     MatDialogModule,
     CreateWindowModule,
-    SharedModule
+    SharedModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
