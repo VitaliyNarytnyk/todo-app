@@ -14,6 +14,7 @@ export class LoginPageComponent implements OnInit {
   loginForm!: FormGroup
 
   hide: boolean = true
+  submitted: boolean = false
 
   constructor(
     private formBuilder: FormBuilder,
@@ -23,11 +24,11 @@ export class LoginPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginForm = new FormGroup({
-      email: new FormControl('', [
+      email: new FormControl('todo@gmail.com', [
         Validators.required,
         Validators.email
       ]),
-      password: new FormControl('', [
+      password: new FormControl('123456', [
         Validators.required,
         Validators.minLength(6)
       ])
@@ -39,6 +40,8 @@ export class LoginPageComponent implements OnInit {
       return
     }
 
+    this.submitted = true
+
     const user: User = {
       email: this.loginForm.value.email,
       password: this.loginForm.value.password
@@ -47,6 +50,7 @@ export class LoginPageComponent implements OnInit {
     this.auth.login(user).subscribe(() => {
       this.loginForm.reset()
       this.router.navigate(['/home'])
+      this.submitted = false
     })
   }
 
