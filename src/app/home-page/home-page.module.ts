@@ -4,9 +4,7 @@ import { CommonModule } from '@angular/common';
 import { HomePageRoutingModule } from './home-page-routing.module';
 import { HomePageComponent } from './home-page.component';
 import { TodoCardModule } from '../shared/components/todo-card/todo-card.module';
-
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -15,8 +13,7 @@ import { MatInputModule } from '@angular/material/input';
     CommonModule,
     HomePageRoutingModule,
     TodoCardModule,
-    MatFormFieldModule,
-    MatInputModule
+    SharedModule
   ],
   exports: [HomePageComponent]
 })

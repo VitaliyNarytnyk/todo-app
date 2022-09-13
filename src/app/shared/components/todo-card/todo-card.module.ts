@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { MatCardModule } from '@angular/material/card';
-import { MatButtonModule } from '@angular/material/button';
 import { TodoCardComponent } from './todo-card.component';
+import { SharedModule } from '../../shared.module';
 
 
 
@@ -12,7 +12,7 @@ import { TodoCardComponent } from './todo-card.component';
   imports: [
     CommonModule,
     MatCardModule,
-    MatButtonModule
+    SharedModule
   ],
   exports: [TodoCardComponent]
 })

@@ -1,0 +1,18 @@
+<h2 mat-dialog-title>Add New TODO</h2>
+<div mat-dialog-content>
+	<form action="" [formGroup]="createForm">
+		<mat-form-field appearance="outline">
+			<mat-label>Title</mat-label>
+			<input matInput formControlName="title">
+		</mat-form-field>
+		<mat-form-field appearance="outline">
+			<mat-label>Details</mat-label>
+			<textarea matInput formControlName="text"></textarea>
+		</mat-form-field>
+	</form>
+</div>
+<div mat-dialog-action align="end">
+	<button mat-raised-button color="primary" (click)="addTodo()"
+		style="background-color: green; margin-right: 8px;">Save</button>
+	<button mat-raised-button color="warn">Close</button>
+</div>
