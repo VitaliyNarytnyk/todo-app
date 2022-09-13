@@ -21,4 +21,18 @@ export class TodosService {
 			)
 	}
 
+	getAll() {
+		return this.http.get(`${environment.fbDbUrl}/todos.json`)
+			.pipe(
+				map((response: { [key: string]: any }) => {
+					return Object
+						.keys(response)
+						.map(key => ({
+							...response[key],
+							id: key
+						}))
+				})
+			)
+	}
+
 }

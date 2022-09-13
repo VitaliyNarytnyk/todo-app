@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Observable, Subscription } from 'rxjs';
+import { Todo } from '../shared/interfaces';
+import { TodosService } from '../shared/services/todos.servics';
 
 @Component({
   selector: 'app-home-page',
@@ -7,9 +10,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomePageComponent implements OnInit {
 
-  constructor() { }
+  todos$!: Observable<Todo[]>
+
+  constructor(
+    private todosService: TodosService
+  ) { }
 
   ngOnInit(): void {
+    this.todos$ = this.todosService.getAll()
   }
 
 }

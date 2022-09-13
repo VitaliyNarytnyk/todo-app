@@ -3,8 +3,10 @@
 	<input matInput type="text" placeholder="Enter title or text...">
 </mat-form-field>
 
-<app-todo-card></app-todo-card>
-<app-todo-card></app-todo-card>
-<app-todo-card></app-todo-card>
-<app-todo-card></app-todo-card>
-<app-todo-card></app-todo-card>
+<div *ngIf="todos$ | async as todos; else loading" class="todos">
+	<app-todo-card *ngFor="let todo of todos" [todo]="todo"></app-todo-card>
+</div>
+
+<ng-template #loading>
+	<p style="text-align: center; font-size: 24px; font-weight: 700;">Loading...</p>
+</ng-template>
