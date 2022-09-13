@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { MatCardModule } from '@angular/material/card';
 import { TodoCardComponent } from './todo-card.component';
 import { SharedModule } from '../../shared.module';
 
@@ -11,7 +10,6 @@ import { SharedModule } from '../../shared.module';
   declarations: [TodoCardComponent],
   imports: [
     CommonModule,
-    MatCardModule,
     SharedModule
   ],
   exports: [TodoCardComponent]
