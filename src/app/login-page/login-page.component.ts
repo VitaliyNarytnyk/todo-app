@@ -18,7 +18,7 @@ export class LoginPageComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private auth: AuthService,
+    public auth: AuthService,
     private router: Router
   ) { }
 
@@ -50,6 +50,8 @@ export class LoginPageComponent implements OnInit {
     this.auth.login(user).subscribe(() => {
       this.loginForm.reset()
       this.router.navigate(['/home'])
+      this.submitted = false
+    }, () => {
       this.submitted = false
     })
   }

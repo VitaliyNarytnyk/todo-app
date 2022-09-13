@@ -1,5 +1,5 @@
 <mat-toolbar color="primary" class="mat-elevation-z6">
-	<button class="btn btn-add" mat-mini-fab (click)="openDialog()">
+	<button class="btn btn-add" mat-mini-fab (click)="openDialog()" *ngIf="auth.isAuthenticated()">
 		<mat-icon>add</mat-icon>
 	</button>
 	<span class="logo">
@@ -7,13 +7,13 @@
 		<mat-icon aria-hidden="false" style="font-size: 18px; margin-left: 5px;">done_all</mat-icon>
 	</span>
 	<span class="spacer"></span>
-	<mat-button-toggle-group>
+	<mat-button-toggle-group *ngIf="auth.isAuthenticated()">
 		<mat-button-toggle value="All">All</mat-button-toggle>
 		<mat-button-toggle value="Active">Active</mat-button-toggle>
 		<mat-button-toggle value="Completed">Completed</mat-button-toggle>
 	</mat-button-toggle-group>
 	<span class="spacer"></span>
-	<a mat-flat-button color="warn" (click)="logout()">Log out</a>
+	<a mat-flat-button color="warn" (click)="logout()" *ngIf="auth.isAuthenticated()">Log out</a>
 </mat-toolbar>
 
 <div class="container">

@@ -1,7 +1,13 @@
 <mat-card>
 	<mat-card-title>
 		<h2>LOGIN PAGE</h2>
+
 	</mat-card-title>
+
+	<div class="alert alert-danger" *ngIf="auth.error$ | async as error">
+		{{error}}
+	</div>
+
 	<form action="" [formGroup]="loginForm" (ngSubmit)="submit()">
 		<div class="input-field">
 			<mat-form-field appearance="outline">

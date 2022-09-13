@@ -13,7 +13,7 @@ export class AppComponent implements OnInit {
 
   constructor(
     private dialog: MatDialog,
-    private auth: AuthService,
+    public auth: AuthService,
     private router: Router
   ) { }
 

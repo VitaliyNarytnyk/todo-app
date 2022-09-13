@@ -2,7 +2,7 @@
 	--primary-color: #1277d3;
 	--dark-color: #333333;
 	--light-color: #f4f4f4;
-	--danger-color: #dc3545;
+	--danger-color: #da1d30;
 	--success-color: #28a745;
 }
 
@@ -61,7 +61,7 @@ img {
 .alert {
 	line-height: 22px;
 	padding: 11px;
-	margin: 16px 0;
+	margin: 0;
 	opacity: 0.9;
 	background: var(--light-color);
 	color: #333;
@@ -87,6 +87,7 @@ img {
 	color: #fff;
 	font-size: 20px;
 	text-align: center;
+	max-width: 600px;
 	width: 100%;
 }
 
