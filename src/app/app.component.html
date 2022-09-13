@@ -1,2 +1,21 @@
-<p>APP-COMPONENT</p>
-<router-outlet></router-outlet>
+<mat-toolbar color="primary" class="mat-elevation-z6">
+	<button class="addNew" mat-mini-fab>
+		<mat-icon>add</mat-icon>
+	</button>
+	<span class="logo">
+		<h1>TODOList</h1>
+		<mat-icon aria-hidden="false" style="font-size: 18px; margin-left: 5px;">done_all</mat-icon>
+	</span>
+	<span class="spacer"></span>
+	<mat-button-toggle-group>
+		<mat-button-toggle value="All">All</mat-button-toggle>
+		<mat-button-toggle value="Active">Active</mat-button-toggle>
+		<mat-button-toggle value="Completed">Completed</mat-button-toggle>
+	</mat-button-toggle-group>
+	<span class="spacer"></span>
+	<a mat-flat-button color="warn">Log out</a>
+</mat-toolbar>
+
+<div class="container">
+	<router-outlet></router-outlet>
+</div>
