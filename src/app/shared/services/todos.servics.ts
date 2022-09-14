@@ -1,11 +1,14 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Observable, map } from "rxjs";
+import { Observable, map, BehaviorSubject } from "rxjs";
 import { environment } from "src/environments/environment";
 import { FbCreateResponse, Todo } from "../interfaces";
+import { FilterEnum } from "./filter.enum";
 
 @Injectable({ providedIn: 'root' })
 export class TodosService {
+
+	filter$ = new BehaviorSubject<FilterEnum>(FilterEnum.all)
 
 	constructor(private http: HttpClient) { }
 
@@ -33,6 +36,10 @@ export class TodosService {
 						}))
 				})
 			)
+	}
+
+	completeTodo(todo: Todo): Observable<Todo> {
+		return this.http.patch<Todo>(`${environment.fbDbUrl}/todos/${todo.id}.json`, todo)
 	}
 
 }

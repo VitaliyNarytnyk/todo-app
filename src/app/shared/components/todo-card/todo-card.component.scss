@@ -9,7 +9,19 @@
 }
 
 .mat-card-subtitle {
-	color: green
+	color: #008000
+}
+
+.subtitle-green {
+	color: rgb(20, 163, 20);
+}
+
+.subtitle-red {
+	color: rgb(175, 7, 7);
+}
+
+.completed {
+	text-decoration: line-through;
 }
 
 .mat-card-content {

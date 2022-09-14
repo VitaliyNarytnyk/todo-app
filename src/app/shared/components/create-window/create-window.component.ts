@@ -32,6 +32,7 @@ export class CreateWindowComponent implements OnInit {
     }
 
     const todo: Todo = {
+      subtitle: 'Active',
       status: true,
       title: this.createForm.value.title,
       text: this.createForm.value.text

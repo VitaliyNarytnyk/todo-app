@@ -1,9 +1,9 @@
 <mat-card>
-	<mat-card-title>{{todo.title}}</mat-card-title>
-	<mat-card-subtitle>Active</mat-card-subtitle>
-	<mat-card-content>{{todo.text}}</mat-card-content>
+	<mat-card-title [class.completed]="!todo.status">{{todo.title}}</mat-card-title>
+	<mat-card-subtitle [class.subtitle-red]="!todo.status">{{ todo.subtitle }}</mat-card-subtitle>
+	<mat-card-content [class.completed]="!todo.status">{{todo.text}}</mat-card-content>
 	<mat-card-actions align="end">
-		<button mat-raised-button color="primary">Done</button>
+		<button mat-raised-button color="primary" [disabled]="!todo.status" (click)="completeTodo(todo)">Complete</button>
 		<button mat-raised-button color="warn">Delete</button>
 	</mat-card-actions>
 </mat-card>

@@ -18,4 +18,5 @@ export interface Todo {
 	status: boolean
 	title: string
 	text: string
+	subtitle: string
 }
