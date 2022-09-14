@@ -3,7 +3,7 @@
 	<input matInput type="text" placeholder="Enter title or text...">
 </mat-form-field>
 
-<div *ngIf="todos$ | async as todos; else loading" class="todos">
+<div *ngIf="visibleTodos$ | async as todos; else loading" class="todos">
 	<app-todo-card *ngFor="let todo of todos" [todo]="todo"></app-todo-card>
 </div>
 
