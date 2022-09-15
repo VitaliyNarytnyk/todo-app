@@ -46,4 +46,8 @@ export class TodosService {
 		return this.http.delete<void>(`${environment.fbDbUrl}/todos/${todo.id}.json`)
 	}
 
+	changeFilter(filtername: FilterEnum): void {
+		this.filter$.next(filtername)
+	}
+
 }

@@ -8,9 +8,14 @@
 	</span>
 	<span class="spacer"></span>
 	<mat-button-toggle-group *ngIf="auth.isAuthenticated()">
-		<mat-button-toggle value="All">All</mat-button-toggle>
-		<mat-button-toggle value="Active">Active</mat-button-toggle>
-		<mat-button-toggle value="Completed">Completed</mat-button-toggle>
+		<mat-button-toggle value="All" [ngClass]="{ selected: (filter$ | async) === filterEnum.all}"
+			(click)="changeFilter($event, filterEnum.all)">All
+		</mat-button-toggle>
+		<mat-button-toggle value="Active" [ngClass]="{ selected: (filter$ | async) === filterEnum.active}"
+			(click)="changeFilter($event, filterEnum.active)">Active</mat-button-toggle>
+		<mat-button-toggle value="Completed" [ngClass]="{ selected: (filter$ | async) === filterEnum.completed}"
+			(click)="changeFilter($event, filterEnum.completed)">Completed
+		</mat-button-toggle>
 	</mat-button-toggle-group>
 	<span class="spacer"></span>
 	<a mat-flat-button color="warn" (click)="logout()" *ngIf="auth.isAuthenticated()">Log out</a>
