@@ -19,6 +19,7 @@ export class TodoCardComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
+    this.todosService.getAll()
   }
 
   ngOnDestroy(): void {
@@ -38,5 +39,9 @@ export class TodoCardComponent implements OnInit, OnDestroy {
     this.nSub = this.todosService.completeTodo(newTodo).subscribe(newTodo => {
       this.todo = newTodo
     })
+  }
+
+  deleteTodo(todo: Todo) {
+    this.todosService.deleteTodo(todo).subscribe(() => { })
   }
 }

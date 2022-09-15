@@ -42,4 +42,8 @@ export class TodosService {
 		return this.http.patch<Todo>(`${environment.fbDbUrl}/todos/${todo.id}.json`, todo)
 	}
 
+	deleteTodo(todo: Todo): Observable<void> {
+		return this.http.delete<void>(`${environment.fbDbUrl}/todos/${todo.id}.json`)
+	}
+
 }

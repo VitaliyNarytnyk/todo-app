@@ -4,6 +4,6 @@
 	<mat-card-content [class.completed]="!todo.status">{{todo.text}}</mat-card-content>
 	<mat-card-actions align="end">
 		<button mat-raised-button color="primary" [disabled]="!todo.status" (click)="completeTodo(todo)">Complete</button>
-		<button mat-raised-button color="warn">Delete</button>
+		<button mat-raised-button color="warn" (click)="deleteTodo(todo)">Delete</button>
 	</mat-card-actions>
 </mat-card>
