@@ -8,6 +8,8 @@ import { FilterEnum } from "./filter.enum";
 @Injectable({ providedIn: 'root' })
 export class TodosService {
 
+	todos$ = new BehaviorSubject<Todo[]>([])
+
 	filter$ = new BehaviorSubject<FilterEnum>(FilterEnum.all)
 
 	constructor(private http: HttpClient) { }
@@ -24,7 +26,7 @@ export class TodosService {
 			)
 	}
 
-	getAll() {
+	getAll(): Observable<Todo[]> {
 		return this.http.get(`${environment.fbDbUrl}/todos.json`)
 			.pipe(
 				map((response: { [key: string]: any }) => {
@@ -42,12 +44,16 @@ export class TodosService {
 		return this.http.patch<Todo>(`${environment.fbDbUrl}/todos/${todo.id}.json`, todo)
 	}
 
-	deleteTodo(todo: Todo): Observable<void> {
-		return this.http.delete<void>(`${environment.fbDbUrl}/todos/${todo.id}.json`)
+	deleteTodo(id: string): Observable<void> {
+		return this.http.delete<void>(`${environment.fbDbUrl}/todos/${id}.json`)
 	}
 
-	changeFilter(filtername: FilterEnum): void {
-		this.filter$.next(filtername)
+	deleteAll(todos: Todo[]): Observable<void> {
+		return this.http.delete<void>(`${environment.fbDbUrl}/todos.json`)
+	}
+
+	changeFilter(filterName: FilterEnum): void {
+		this.filter$.next(filterName)
 	}
 
 }

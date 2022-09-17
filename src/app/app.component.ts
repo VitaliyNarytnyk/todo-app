@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { CreateWindowComponent } from './shared/components/create-window/create-window.component';
@@ -43,4 +43,5 @@ export class AppComponent implements OnInit {
   changeFilter(event: Event, filterName: FilterEnum): void {
     this.todosService.changeFilter(filterName)
   }
+
 }

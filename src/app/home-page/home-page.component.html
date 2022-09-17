@@ -3,10 +3,36 @@
 	<input matInput type="text" placeholder="Enter title or text...">
 </mat-form-field>
 
-<div *ngIf="visibleTodos$ | async as todos; else loading" class="todos">
-	<app-todo-card *ngFor="let todo of todos" [todo]="todo"></app-todo-card>
+
+<div class="todos" *ngIf="allTodos$ | async as todos; else loading">
+	<div *ngIf="todos.length; else noTodos">
+		<div class="todos__card">
+			<app-todo-card *ngFor="let todo of todos" [todo]="todo"></app-todo-card>
+		</div>
+		<div class="todos__buttons btn">
+			<div class="btn__done">
+				<button mat-fab color="primary">
+					<mat-icon>done_all</mat-icon>
+				</button>
+				<p>complete all</p>
+			</div>
+			<div class="btn__delete">
+				<button mat-fab color="warn" (click)="deleteAll(todos)">
+					<mat-icon>delete</mat-icon>
+				</button>
+				<p>delete all</p>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="todos__count" *ngIf="allTodos$ | async as todos">
+	<span>{{ todos.length }}</span>
 </div>
 
 <ng-template #loading>
 	<p style="text-align: center; font-size: 24px; font-weight: 700;">Loading...</p>
+</ng-template>
+
+<ng-template #noTodos>
+	<p style="text-align: center; font-size: 24px; font-weight: 700;">No Todos</p>
 </ng-template>

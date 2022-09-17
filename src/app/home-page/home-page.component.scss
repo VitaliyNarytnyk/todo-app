@@ -2,3 +2,55 @@
 	width: 100%;
 	font-size: 20px;
 }
+
+
+.todos {
+
+	&__count {
+		position: absolute;
+		top: 100px;
+		left: 40px;
+		padding: 15px;
+		border: 1px solid #000;
+		border-radius: 10%;
+		font-size: 30px;
+	}
+
+	&__buttons {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		position: absolute;
+		top: 100px;
+		right: 80px;
+	}
+}
+
+.btn {
+	p {
+		visibility: hidden;
+		color: rgb(46, 38, 38);
+		font-size: 14px;
+		font-weight: 600;
+	}
+
+	&__done {
+		text-align: center;
+
+		&:hover {
+			p {
+				visibility: visible
+			}
+		}
+	}
+
+	&__delete {
+		text-align: center;
+
+		&:hover {
+			p {
+				visibility: visible
+			}
+		}
+	}
+}

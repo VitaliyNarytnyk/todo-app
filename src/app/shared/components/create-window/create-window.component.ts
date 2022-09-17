@@ -38,8 +38,10 @@ export class CreateWindowComponent implements OnInit {
       text: this.createForm.value.text
     }
 
-    this.todosService.create(todo).subscribe(() => {
+    this.todosService.create(todo).subscribe(todo => {
       this.createForm.reset()
+      this.dialogRef.close()
+      this.todosService.todos$.next([todo, ...this.todosService.todos$.getValue()])
     })
 
   }

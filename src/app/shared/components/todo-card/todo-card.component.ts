@@ -13,6 +13,7 @@ export class TodoCardComponent implements OnInit, OnDestroy {
   @Input() todo!: Todo
 
   nSub!: Subscription
+  dSub!: Subscription
 
   constructor(
     private todosService: TodosService
@@ -25,6 +26,10 @@ export class TodoCardComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     if (this.nSub) {
       this.nSub.unsubscribe()
+    }
+
+    if (this.dSub) {
+      this.dSub.unsubscribe()
     }
   }
 
@@ -41,7 +46,10 @@ export class TodoCardComponent implements OnInit, OnDestroy {
     })
   }
 
-  deleteTodo(todo: Todo) {
-    this.todosService.deleteTodo(todo).subscribe(() => { })
+  deleteTodo(id: string) {
+    this.dSub = this.todosService.deleteTodo(id).subscribe(() => {
+      const updatedTodos = this.todosService.todos$.getValue().filter(todo => todo.id !== id)
+      this.todosService.todos$.next(updatedTodos)
+    })
   }
 }
