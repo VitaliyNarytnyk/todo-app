@@ -17,6 +17,8 @@ export class HomePageComponent implements OnInit, OnDestroy {
   dASub!: Subscription
   cSub!: Subscription
 
+  searchStr = ''
+
   constructor(
     private todosService: TodosService
   ) { }
@@ -51,8 +53,8 @@ export class HomePageComponent implements OnInit, OnDestroy {
     }
   }
 
-  deleteAll(todos: Todo[]) {
-    this.dASub = this.todosService.deleteAll(todos)
+  deleteAll() {
+    this.dASub = this.todosService.deleteAll()
       .pipe(delay(1000))
       .subscribe(() => {
         this.todosService.todos$.next([])

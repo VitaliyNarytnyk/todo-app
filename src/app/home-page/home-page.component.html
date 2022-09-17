@@ -1,13 +1,13 @@
 <mat-form-field appearance="standard">
-	<mat-label>Filter</mat-label>
-	<input matInput type="text" placeholder="Enter title or text...">
+	<mat-label>Search</mat-label>
+	<input matInput type="text" placeholder="Enter title or text..." [(ngModel)]="searchStr">
 </mat-form-field>
 
 
 <div class="todos" *ngIf="allTodos$ | async as todos; else loading">
 	<div *ngIf="todos.length; else noTodos">
 		<div class="todos__card">
-			<app-todo-card *ngFor="let todo of todos" [todo]="todo"></app-todo-card>
+			<app-todo-card *ngFor="let todo of todos | searchTodo:searchStr" [todo]="todo"></app-todo-card>
 		</div>
 		<div class="todos__buttons btn">
 			<div class="btn__done">
@@ -17,7 +17,7 @@
 				<p>complete all</p>
 			</div>
 			<div class="btn__delete">
-				<button mat-fab color="warn" (click)="deleteAll(todos)">
+				<button mat-fab color="warn" (click)="deleteAll()">
 					<mat-icon>delete</mat-icon>
 				</button>
 				<p>delete all</p>

@@ -48,7 +48,7 @@ export class TodosService {
 		return this.http.delete<void>(`${environment.fbDbUrl}/todos/${id}.json`)
 	}
 
-	deleteAll(todos: Todo[]): Observable<void> {
+	deleteAll(): Observable<void> {
 		return this.http.delete<void>(`${environment.fbDbUrl}/todos.json`)
 	}
 
