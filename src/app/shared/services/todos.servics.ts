@@ -56,4 +56,16 @@ export class TodosService {
 		this.filter$.next(filterName)
 	}
 
+	completeAll(todos: Todo[]): Observable<Todo[]> {
+		return this.http.put<Todo[]>(`${environment.fbDbUrl}/todos.json`, todos)
+		//.pipe(
+		//	map(todo => {
+		//		return {
+		//			...todo,
+		//			status: !todo.status,
+		//			subtitle: 'Completed'
+		//		}
+		//	})
+		//)
+	}
 }

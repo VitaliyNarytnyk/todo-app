@@ -11,7 +11,7 @@
 		</div>
 		<div class="todos__buttons btn">
 			<div class="btn__done">
-				<button mat-fab color="primary">
+				<button mat-fab color="primary" (click)="completeAll(todos)">
 					<mat-icon>done_all</mat-icon>
 				</button>
 				<p>complete all</p>

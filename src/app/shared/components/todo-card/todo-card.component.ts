@@ -33,21 +33,18 @@ export class TodoCardComponent implements OnInit, OnDestroy {
     }
   }
 
-  completeTodo(newTodo: Todo) {
+  completeTodo(todo: Todo) {
 
-    const updatedTodo = this.todosService.todos$.getValue().map(todo => {
-      if (todo.id === newTodo.id) {
-        return {
-          ...todo,
-          status: !todo.status,
-          subtitle: 'Completed'
-        }
-      }
-      return todo
-    })
+    const newTodo = {
+      ...todo,
+      status: !todo.status,
+      subtitle: 'Completed'
+    }
 
-    this.nSub = this.todosService.completeTodo(newTodo).subscribe(todo => {
-      this.todosService.todos$.next(updatedTodo)
+    this.nSub = this.todosService.completeTodo(newTodo).subscribe(newTodo => {
+      const updatedTodos = this.todosService.todos$.getValue().filter(todo => todo.id !== newTodo.id)
+      this.todosService.todos$.next(updatedTodos)
+      this.todosService.todos$.getValue().unshift(newTodo)
     })
   }
 

@@ -25,8 +25,8 @@ export class HomePageComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.tSub = this.todosService.getAll()
-      .subscribe(response => {
-        this.todosService.todos$.next(response)
+      .subscribe(todos => {
+        this.todosService.todos$.next(todos.reverse())
       })
     this.allTodos$ = combineLatest([
       this.todosService.todos$,
@@ -59,5 +59,20 @@ export class HomePageComponent implements OnInit, OnDestroy {
       .subscribe(() => {
         this.todosService.todos$.next([])
       })
+  }
+
+  completeAll(todos: Todo[]) {
+
+    const updatedTodos = this.todosService.todos$.getValue().map(todo => {
+      return {
+        ...todo,
+        status: false,
+        subtitle: 'Completed'
+      }
+    })
+
+    this.cSub = this.todosService.completeAll(updatedTodos).subscribe(todos => {
+      this.todosService.todos$.next(todos)
+    })
   }
 }
