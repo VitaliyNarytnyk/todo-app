@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { combineLatest, delay, map, Subscription } from 'rxjs';
 import { Todo } from '../shared/interfaces';
 import { FilterEnum } from '../shared/services/filter.enum';
@@ -26,7 +27,7 @@ export class HomePageComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.tSub = this.todosService.getAll()
       .subscribe(todos => {
-        this.todosService.todos$.next(todos.reverse())
+        this.todosService.todos$.next(todos.sort((a, b) => (a.status == false) ? -1 : 1))
       })
     this.allTodos$ = combineLatest([
       this.todosService.todos$,
@@ -74,5 +75,9 @@ export class HomePageComponent implements OnInit, OnDestroy {
     this.cSub = this.todosService.completeAll(updatedTodos).subscribe(todos => {
       this.todosService.todos$.next(todos)
     })
+  }
+
+  sorting() {
+    this.todosService.todos$.getValue().sort((a, b) => (a.title > b.title) ? 1 : -1)
   }
 }

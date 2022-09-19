@@ -53,4 +53,14 @@
 			}
 		}
 	}
+
+	&__sort {
+		text-align: center;
+
+		&:hover {
+			p {
+				visibility: visible
+			}
+		}
+	}
 }
