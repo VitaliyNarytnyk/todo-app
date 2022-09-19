@@ -41,7 +41,7 @@ export class TodosService {
 	}
 
 	completeTodo(todo: Todo): Observable<Todo> {
-		return this.http.patch<Todo>(`${environment.fbDbUrl}/todos/${todo.id}.json`, todo)
+		return this.http.put<Todo>(`${environment.fbDbUrl}/todos/${todo.id}.json`, todo)
 	}
 
 	deleteTodo(id: string): Observable<void> {
@@ -58,14 +58,5 @@ export class TodosService {
 
 	completeAll(todos: Todo[]): Observable<Todo[]> {
 		return this.http.put<Todo[]>(`${environment.fbDbUrl}/todos.json`, todos)
-		//.pipe(
-		//	map(todo => {
-		//		return {
-		//			...todo,
-		//			status: !todo.status,
-		//			subtitle: 'Completed'
-		//		}
-		//	})
-		//)
 	}
 }

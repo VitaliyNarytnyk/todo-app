@@ -1,5 +1,5 @@
-<mat-toolbar color="primary" class="mat-elevation-z6">
-	<button class="btn btn-add" mat-mini-fab (click)="openDialog()" *ngIf="auth.isAuthenticated()">
+<mat-toolbar color="primary" class="mat-elevation-z8">
+	<button class="btn-add" mat-mini-fab (click)="openDialog()" *ngIf="auth.isAuthenticated()">
 		<mat-icon>add</mat-icon>
 	</button>
 	<span class="logo">
@@ -8,7 +8,7 @@
 	</span>
 	<span class="spacer"></span>
 	<mat-button-toggle-group *ngIf="auth.isAuthenticated()">
-		<mat-button-toggle value="All" (click)="changeFilter($event, filterEnum.all)">All
+		<mat-button-toggle checked value="All" (click)="changeFilter($event, filterEnum.all)">All
 		</mat-button-toggle>
 		<mat-button-toggle value="Active" (click)="changeFilter($event, filterEnum.active)">Active</mat-button-toggle>
 		<mat-button-toggle value="Completed" (click)="changeFilter($event, filterEnum.completed)">Completed

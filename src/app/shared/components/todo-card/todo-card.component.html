@@ -1,4 +1,4 @@
-<mat-card>
+<mat-card [class.box-shadow-red]="!todo.status" [class.box-shadow-green]="todo.status" class="mat-elevation-z8">
 	<mat-card-title [class.completed]="!todo.status">{{todo.title}}</mat-card-title>
 	<mat-card-subtitle [class.subtitle-red]="!todo.status">{{ todo.subtitle }}</mat-card-subtitle>
 	<mat-card-content>{{todo.text}}</mat-card-content>
