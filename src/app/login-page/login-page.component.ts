@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { User } from '../shared/interfaces';
 import { AuthService } from '../shared/services/auth.service';
 
@@ -15,14 +15,22 @@ export class LoginPageComponent implements OnInit {
 
   hide: boolean = true
   submitted: boolean = false
+  message!: string
 
   constructor(
     private formBuilder: FormBuilder,
     public auth: AuthService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
+    this.route.queryParams.subscribe((params: Params) => {
+      if (params['loginAgain']) {
+        this.message = 'Please, login again!'
+      }
+    })
+
     this.loginForm = new FormGroup({
       email: new FormControl('todo@gmail.com', [
         Validators.required,
@@ -33,6 +41,8 @@ export class LoginPageComponent implements OnInit {
         Validators.minLength(6)
       ])
     })
+
+
   }
 
   submit() {

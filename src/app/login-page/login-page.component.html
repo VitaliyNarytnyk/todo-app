@@ -8,6 +8,10 @@
 		{{error}}
 	</div>
 
+	<div class="alert alert-info" *ngIf="message">
+		{{ message }}
+	</div>
+
 	<form action="" [formGroup]="loginForm" (ngSubmit)="submit()">
 		<div class="input-field">
 			<mat-form-field appearance="outline">
