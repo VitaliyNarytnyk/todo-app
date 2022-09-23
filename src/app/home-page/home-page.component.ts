@@ -18,6 +18,7 @@ export class HomePageComponent implements OnInit, OnDestroy {
   cSub!: Subscription
 
   searchStr = ''
+  sort = true
 
   constructor(
     private todosService: TodosService
@@ -77,6 +78,12 @@ export class HomePageComponent implements OnInit, OnDestroy {
   }
 
   sorting() {
-    this.todosService.todos$.getValue().sort((a, b) => (a.title > b.title) ? 1 : -1)
+    this.sort = !this.sort
+    if (this.sort) {
+      this.todosService.todos$.getValue().sort((a, b) => (a.title > b.title) ? 1 : -1)
+    } else {
+      this.todosService.todos$.getValue().sort((a, b) => (a.title > b.title) ? -1 : 1)
+    }
+
   }
 }

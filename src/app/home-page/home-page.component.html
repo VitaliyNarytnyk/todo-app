@@ -3,9 +3,8 @@
 	<input matInput type="text" placeholder="Enter title or text..." [(ngModel)]="searchStr">
 </mat-form-field>
 
-
-<div class="todos" *ngIf="allTodos$ | async as todos; else loading">
-	<div *ngIf="todos.length; else noTodos">
+<div class="todos" *ngIf="allTodos$ | async as todos">
+	<div *ngIf="todos.length; else loading">
 		<div class="todos__card">
 			<app-todo-card *ngFor="let todo of todos | searchTodo:searchStr" [todo]="todo"></app-todo-card>
 		</div>
@@ -30,15 +29,11 @@
 			</div>
 		</div>
 	</div>
-</div>
-<div class="todos__count" *ngIf="allTodos$ | async as todos">
-	<span>{{ todos.length }}</span>
+	<div class="todos__count" *ngIf="allTodos$ | async as todos">
+		<span>{{ todos.length }}</span>
+	</div>
 </div>
 
 <ng-template #loading>
-	<p style="text-align: center; font-size: 24px; font-weight: 700;">Loading...</p>
-</ng-template>
-
-<ng-template #noTodos>
-	<p style="text-align: center; font-size: 24px; font-weight: 700;">No Todos</p>
+	<img src="../../assets/loading.gif" alt="" style="margin: 0 auto;">
 </ng-template>
