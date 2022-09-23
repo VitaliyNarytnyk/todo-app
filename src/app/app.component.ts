@@ -40,7 +40,7 @@ export class AppComponent implements OnInit {
     });
   }
 
-  changeFilter(event: Event, filterName: FilterEnum): void {
+  changeFilter(filterName: FilterEnum): void {
     this.todosService.changeFilter(filterName)
   }
 

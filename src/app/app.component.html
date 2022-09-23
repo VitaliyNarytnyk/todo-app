@@ -8,10 +8,10 @@
 	</span>
 	<span class="spacer"></span>
 	<mat-button-toggle-group *ngIf="auth.isAuthenticated()">
-		<mat-button-toggle checked value="All" (click)="changeFilter($event, filterEnum.all)">All
+		<mat-button-toggle checked value="All" (click)="changeFilter(filterEnum.all)">All
 		</mat-button-toggle>
-		<mat-button-toggle value="Active" (click)="changeFilter($event, filterEnum.active)">Active</mat-button-toggle>
-		<mat-button-toggle value="Completed" (click)="changeFilter($event, filterEnum.completed)">Completed
+		<mat-button-toggle value="Active" (click)="changeFilter(filterEnum.active)">Active</mat-button-toggle>
+		<mat-button-toggle value="Completed" (click)="changeFilter(filterEnum.completed)">Completed
 		</mat-button-toggle>
 	</mat-button-toggle-group>
 	<span class="spacer"></span>

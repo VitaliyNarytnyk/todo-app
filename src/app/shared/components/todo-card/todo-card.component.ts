@@ -20,7 +20,7 @@ export class TodoCardComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    this.todosService.getAll()
+
   }
 
   ngOnDestroy(): void {
